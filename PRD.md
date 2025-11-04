@@ -3,7 +3,7 @@
 
 **Versión:** 1.0
 **Última actualización:** 4 de Noviembre, 2025
-**Estado del Proyecto:** 🟢 En Desarrollo (Sprint 1 y 2 Completados)
+**Estado del Proyecto:** 🟢 En Desarrollo (Sprints 1-4 Completados)
 
 ---
 
@@ -65,7 +65,55 @@ Una plataforma **simple e intuitiva** que permite a personas sin conocimiento fi
 - [x] Mostrar datos del usuario en el sidebar (nombre e email)
 - [x] Sistema de sesiones funcionando completamente
 
-### ⏳ Por Hacer (Sprints 3-12)
+### ✅ Completado (Sprint 3 - 4 Nov 2025)
+
+- [x] Página de gestión de cuentas con CRUD completo
+  - [x] Crear, editar y eliminar cuentas
+  - [x] 4 tipos: efectivo, banco, tarjeta, inversión
+  - [x] Ver saldo total
+  - [x] Soft delete para integridad
+- [x] Página de fuentes de ingreso con CRUD completo
+  - [x] Crear, editar y eliminar fuentes
+  - [x] Tipos: fijo y variable
+  - [x] Frecuencias: mensual, quincenal, único
+- [x] Página de transacciones con tabs
+  - [x] Tab "Movimientos" con listado completo
+  - [x] Tab "Cuentas" para gestionar cuentas
+  - [x] Formulario completo de agregar transacciones
+  - [x] Filtrado por cuenta y categoría
+  - [x] Vista de balance (ingresos vs gastos)
+- [x] Dashboard actualizado con datos reales
+  - [x] Queries a Supabase en lugar de dummy data
+  - [x] Cálculo dinámico de métricas
+  - [x] Health score basado en datos reales
+  - [x] Insights contextuales
+  - [x] Transacciones del mes actual
+  - [x] Metas activas con progreso real
+- [x] Navegación actualizada con enlace "Ingresos"
+
+### ✅ Completado (Sprint 4 - 4 Nov 2025)
+
+- [x] Página de análisis de gastos por categoría
+  - [x] Distribución visual por categoría (barras de progreso)
+  - [x] Tabla de top categorías
+  - [x] Selector de mes para análisis histórico
+  - [x] Cálculo de porcentajes de gasto
+- [x] Comparación mes a mes
+  - [x] Comparación con mes anterior
+  - [x] Cálculo de cambio porcentual
+  - [x] Indicadores visuales (↑↓)
+- [x] Insights automáticos
+  - [x] Alerta de concentración alta en una categoría
+  - [x] Alerta de incremento significativo
+  - [x] Felicitación por reducción de gastos
+  - [x] Consejos de ahorro personalizados
+- [x] Filtros y visualizaciones
+  - [x] Filtro por mes
+  - [x] Gráficos de barras con gradientes
+  - [x] Conteo de transacciones por categoría
+- [x] Navegación actualizada con enlace "Análisis"
+
+### ⏳ Por Hacer (Sprints 5-12)
 
 Ver sección "Roadmap de Desarrollo" abajo
 
@@ -720,9 +768,9 @@ Tablas principales:
 ### **Fase 1: MVP Funcional** (Sprints 1-6) - 6 semanas
 ```
 ✅ Sprint 1: Fundamentos y Dashboard (COMPLETADO)
-🟡 Sprint 2: Autenticación (EN PROGRESO)
-⏳ Sprint 3: Transacciones Core
-⏳ Sprint 4: Categorías y Análisis
+✅ Sprint 2: Autenticación (COMPLETADO)
+✅ Sprint 3: Transacciones Core (COMPLETADO)
+✅ Sprint 4: Categorías y Análisis (COMPLETADO)
 ⏳ Sprint 5: Presupuestos
 ⏳ Sprint 6: Metas Financieras
 ```

@@ -31,6 +31,7 @@ import {
 import {
   BanknotesIcon,
   ChartBarIcon,
+  ChartPieIcon,
   Cog6ToothIcon,
   CurrencyDollarIcon,
   HomeIcon,
@@ -146,6 +147,10 @@ export function ApplicationLayout({ children }: { children: React.ReactNode }) {
               <SidebarItem href="/ingresos" current={pathname.startsWith('/ingresos')}>
                 <CurrencyDollarIcon />
                 <SidebarLabel>Ingresos</SidebarLabel>
+              </SidebarItem>
+              <SidebarItem href="/analisis" current={pathname.startsWith('/analisis')}>
+                <ChartPieIcon />
+                <SidebarLabel>Análisis</SidebarLabel>
               </SidebarItem>
               <SidebarItem href="/metas" current={pathname.startsWith('/metas')}>
                 <RocketLaunchIcon />
