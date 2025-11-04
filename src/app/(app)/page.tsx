@@ -78,7 +78,7 @@ export default function Dashboard() {
           .from('goals')
           .select('*')
           .eq('user_id', user.id)
-          .eq('is_active', true)
+          .eq('status', 'activa')
           .limit(4),
         supabase
           .from('income_sources')
@@ -425,10 +425,10 @@ export default function Dashboard() {
                     </div>
                   </div>
 
-                  {goal.target_date && (
+                  {goal.deadline && (
                     <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
                       Fecha objetivo:{' '}
-                      {new Date(goal.target_date).toLocaleDateString('es-MX', {
+                      {new Date(goal.deadline).toLocaleDateString('es-MX', {
                         month: 'long',
                         year: 'numeric',
                       })}

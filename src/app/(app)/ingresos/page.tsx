@@ -15,7 +15,6 @@ import { Input } from '@/components/input'
 import { Select } from '@/components/select'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/table'
 import { Text } from '@/components/text'
-import { Textarea } from '@/components/textarea'
 import { createClient } from '@/lib/supabase/client'
 import type { IncomeSource } from '@/types/finance'
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/16/solid'
@@ -51,7 +50,6 @@ export default function IngresosPage() {
   const [formType, setFormType] = useState<'fijo' | 'variable'>('fijo')
   const [formAmount, setFormAmount] = useState('')
   const [formFrequency, setFormFrequency] = useState('mensual')
-  const [formDescription, setFormDescription] = useState('')
   const [formError, setFormError] = useState('')
 
   useEffect(() => {
@@ -86,7 +84,6 @@ export default function IngresosPage() {
     setFormType('fijo')
     setFormAmount('')
     setFormFrequency('mensual')
-    setFormDescription('')
     setFormError('')
     setIsAddDialogOpen(true)
   }
@@ -97,7 +94,6 @@ export default function IngresosPage() {
     setFormType(source.type)
     setFormAmount(source.amount.toString())
     setFormFrequency(source.frequency)
-    setFormDescription(source.description || '')
     setFormError('')
     setIsEditDialogOpen(true)
   }
@@ -132,7 +128,6 @@ export default function IngresosPage() {
         type: formType,
         amount: parseFloat(formAmount),
         frequency: formFrequency,
-        description: formDescription.trim() || null,
         is_active: true,
       })
 
@@ -169,7 +164,6 @@ export default function IngresosPage() {
           type: formType,
           amount: parseFloat(formAmount),
           frequency: formFrequency,
-          description: formDescription.trim() || null,
         })
         .eq('id', selectedSource.id)
 
@@ -258,14 +252,7 @@ export default function IngresosPage() {
             <TableBody>
               {incomeSources.map((source) => (
                 <TableRow key={source.id}>
-                  <TableCell>
-                    <div>
-                      <div className="font-medium">{source.name}</div>
-                      {source.description && (
-                        <div className="text-xs text-zinc-500">{source.description}</div>
-                      )}
-                    </div>
-                  </TableCell>
+                  <TableCell className="font-medium">{source.name}</TableCell>
                   <TableCell>
                     <Badge color={incomeTypeColors[source.type]}>
                       {incomeTypeLabels[source.type]}
@@ -335,18 +322,8 @@ export default function IngresosPage() {
             <Select value={formFrequency} onChange={(e) => setFormFrequency(e.target.value)}>
               <option value="mensual">Mensual</option>
               <option value="quincenal">Quincenal</option>
-              <option value="semanal">Semanal</option>
-              <option value="eventual">Eventual</option>
+              <option value="unico">Único</option>
             </Select>
-          </Field>
-          <Field className="mt-4">
-            <Label>Descripción (opcional)</Label>
-            <Textarea
-              value={formDescription}
-              onChange={(e) => setFormDescription(e.target.value)}
-              placeholder="Información adicional sobre este ingreso"
-              rows={2}
-            />
           </Field>
         </DialogBody>
         <DialogActions>
@@ -400,18 +377,8 @@ export default function IngresosPage() {
             <Select value={formFrequency} onChange={(e) => setFormFrequency(e.target.value)}>
               <option value="mensual">Mensual</option>
               <option value="quincenal">Quincenal</option>
-              <option value="semanal">Semanal</option>
-              <option value="eventual">Eventual</option>
+              <option value="unico">Único</option>
             </Select>
-          </Field>
-          <Field className="mt-4">
-            <Label>Descripción (opcional)</Label>
-            <Textarea
-              value={formDescription}
-              onChange={(e) => setFormDescription(e.target.value)}
-              placeholder="Información adicional sobre este ingreso"
-              rows={2}
-            />
           </Field>
         </DialogBody>
         <DialogActions>
