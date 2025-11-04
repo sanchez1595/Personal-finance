@@ -32,6 +32,7 @@ import {
   BanknotesIcon,
   ChartBarIcon,
   Cog6ToothIcon,
+  CurrencyDollarIcon,
   HomeIcon,
   LightBulbIcon as LightBulbIconOutline,
   PresentationChartLineIcon,
@@ -141,6 +142,10 @@ export function ApplicationLayout({ children }: { children: React.ReactNode }) {
               <SidebarItem href="/transacciones" current={pathname.startsWith('/transacciones')}>
                 <BanknotesIcon />
                 <SidebarLabel>Transacciones</SidebarLabel>
+              </SidebarItem>
+              <SidebarItem href="/ingresos" current={pathname.startsWith('/ingresos')}>
+                <CurrencyDollarIcon />
+                <SidebarLabel>Ingresos</SidebarLabel>
               </SidebarItem>
               <SidebarItem href="/metas" current={pathname.startsWith('/metas')}>
                 <RocketLaunchIcon />
