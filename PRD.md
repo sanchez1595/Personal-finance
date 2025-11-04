@@ -3,7 +3,7 @@
 
 **Versión:** 1.0
 **Última actualización:** 4 de Noviembre, 2025
-**Estado del Proyecto:** 🟢 En Desarrollo (Sprints 1-4 Completados)
+**Estado del Proyecto:** 🟢 En Desarrollo (Sprints 1-5 Completados)
 
 ---
 
@@ -113,7 +113,31 @@ Una plataforma **simple e intuitiva** que permite a personas sin conocimiento fi
   - [x] Conteo de transacciones por categoría
 - [x] Navegación actualizada con enlace "Análisis"
 
-### ⏳ Por Hacer (Sprints 5-12)
+### ✅ Completado (Sprint 5 - 4 Nov 2025)
+
+- [x] Página de gestión de presupuestos
+  - [x] CRUD completo de presupuestos por categoría
+  - [x] Tarjetas resumen (Total presupuestado, Gastado, Disponible)
+  - [x] Listado de presupuestos con progreso individual
+  - [x] Formularios de crear y editar presupuesto
+  - [x] Eliminación con confirmación
+- [x] Indicadores de progreso
+  - [x] Barras de progreso por categoría
+  - [x] Cálculo automático de porcentaje gastado
+  - [x] Código de colores (verde<60%, amarillo 60-80%, naranja 80-100%, rojo >100%)
+  - [x] Montos detallados (gastado / presupuesto)
+- [x] Sistema de alertas
+  - [x] Alerta local en cada presupuesto ≥80%
+  - [x] Mensajes diferenciados para 80-100% y >100%
+  - [x] Integración de alertas en dashboard principal
+  - [x] Banner de advertencia cuando hay presupuestos cerca del límite
+  - [x] Listado de hasta 3 categorías con mayor riesgo
+- [x] Progreso general
+  - [x] Sección de resumen de progreso total
+  - [x] Visualización de todos los presupuestos activos
+- [x] Navegación actualizada con enlace "Presupuestos"
+
+### ⏳ Por Hacer (Sprints 6-12)
 
 Ver sección "Roadmap de Desarrollo" abajo
 
@@ -771,7 +795,7 @@ Tablas principales:
 ✅ Sprint 2: Autenticación (COMPLETADO)
 ✅ Sprint 3: Transacciones Core (COMPLETADO)
 ✅ Sprint 4: Categorías y Análisis (COMPLETADO)
-⏳ Sprint 5: Presupuestos
+✅ Sprint 5: Presupuestos (COMPLETADO)
 ⏳ Sprint 6: Metas Financieras
 ```
 

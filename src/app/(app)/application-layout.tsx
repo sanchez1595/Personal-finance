@@ -38,6 +38,7 @@ import {
   LightBulbIcon as LightBulbIconOutline,
   PresentationChartLineIcon,
   RocketLaunchIcon,
+  ScaleIcon,
 } from '@heroicons/react/20/solid'
 import { usePathname, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
@@ -151,6 +152,10 @@ export function ApplicationLayout({ children }: { children: React.ReactNode }) {
               <SidebarItem href="/analisis" current={pathname.startsWith('/analisis')}>
                 <ChartPieIcon />
                 <SidebarLabel>Análisis</SidebarLabel>
+              </SidebarItem>
+              <SidebarItem href="/presupuestos" current={pathname.startsWith('/presupuestos')}>
+                <ScaleIcon />
+                <SidebarLabel>Presupuestos</SidebarLabel>
               </SidebarItem>
               <SidebarItem href="/metas" current={pathname.startsWith('/metas')}>
                 <RocketLaunchIcon />

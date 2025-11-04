@@ -2,11 +2,44 @@
 
 export type TransactionType = 'ingreso' | 'gasto'
 export type IncomeType = 'fijo' | 'variable'
-export type AccountType = 'efectivo' | 'banco' | 'tarjeta' | 'inversion'
+export type AccountType =
+  | 'efectivo'      // Dinero en físico
+  | 'ahorro'        // Cuenta de ahorros
+  | 'corriente'     // Cuenta corriente
+  | 'credito'       // Tarjeta de crédito
+  | 'debito'        // Tarjeta de débito
+  | 'prepago'       // Tarjeta prepagada
+  | 'inversion'     // Inversiones
+  | 'banco'         // [Deprecated] Usar ahorro/corriente
+  | 'tarjeta'       // [Deprecated] Usar credito/debito
+  | 'otro'          // Otros tipos
 export type GoalType = 'emergencia' | 'compra' | 'deuda' | 'ahorro' | 'personalizada'
 export type GoalStatus = 'activa' | 'pausada' | 'completada'
 export type InsightType = 'recomendacion' | 'alerta' | 'logro'
 export type InsightSeverity = 'info' | 'warning' | 'critical' | 'success'
+
+// Country (País)
+export interface Country {
+  code: string
+  name: string
+  currency_code: string
+  currency_symbol: string
+  currency_name: string
+  decimal_separator: string
+  thousands_separator: string
+  created_at: string
+}
+
+// Bank (Banco)
+export interface Bank {
+  id: string
+  name: string
+  code: string
+  country_code: string
+  logo_url?: string
+  is_active: boolean
+  created_at: string
+}
 
 // Profile
 export interface Profile {
@@ -14,6 +47,7 @@ export interface Profile {
   full_name: string
   avatar_url?: string
   preferred_currency: string
+  country_code: string
   onboarding_completed: boolean
   created_at: string
   updated_at?: string
@@ -26,6 +60,7 @@ export interface Account {
   name: string
   type: AccountType
   balance: number
+  bank_id?: string | null  // Opcional: banco asociado
   is_active: boolean
   created_at: string
 }

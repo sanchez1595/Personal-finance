@@ -36,6 +36,7 @@ export default function Dashboard() {
   const [transactions, setTransactions] = useState<Transaction[]>([])
   const [goals, setGoals] = useState<Goal[]>([])
   const [incomeSources, setIncomeSources] = useState<IncomeSource[]>([])
+  const [budgetAlerts, setBudgetAlerts] = useState<any[]>([])
 
   // Metrics state
   const [totalIncome, setTotalIncome] = useState(0)
@@ -59,7 +60,7 @@ export default function Dashboard() {
       if (!user) return
 
       // Load all data in parallel
-      const [accountsRes, transactionsRes, goalsRes, incomeSourcesRes] = await Promise.all([
+      const [accountsRes, transactionsRes, goalsRes, incomeSourcesRes, budgetsRes] = await Promise.all([
         supabase.from('accounts').select('*').eq('user_id', user.id).eq('is_active', true),
         supabase
           .from('transactions')
@@ -85,17 +86,54 @@ export default function Dashboard() {
           .select('*')
           .eq('user_id', user.id)
           .eq('is_active', true),
+        supabase
+          .from('budgets')
+          .select(`
+            *,
+            category:categories(name)
+          `)
+          .eq('user_id', user.id)
+          .lte('start_date', getLastDayOfMonth())
+          .or(`end_date.is.null,end_date.gte.${getFirstDayOfMonth()}`),
       ])
 
       const accountsData = accountsRes.data || []
       const transactionsData = transactionsRes.data || []
       const goalsData = goalsRes.data || []
       const incomeSourcesData = incomeSourcesRes.data || []
+      const budgetsData = budgetsRes.data || []
 
       setAccounts(accountsData)
       setTransactions(transactionsData)
       setGoals(goalsData)
       setIncomeSources(incomeSourcesData)
+
+      // Process budget alerts
+      const alerts = await Promise.all(
+        budgetsData.map(async (budget: any) => {
+          const { data: categoryTransactions } = await supabase
+            .from('transactions')
+            .select('amount')
+            .eq('user_id', user.id)
+            .eq('category_id', budget.category_id)
+            .eq('type', 'gasto')
+            .gte('date', getFirstDayOfMonth())
+            .lte('date', getLastDayOfMonth())
+
+          const spent = categoryTransactions?.reduce((sum, t) => sum + t.amount, 0) || 0
+          const percentage = budget.amount > 0 ? (spent / budget.amount) * 100 : 0
+
+          return {
+            category: budget.category?.name,
+            budget: budget.amount,
+            spent,
+            percentage,
+          }
+        })
+      )
+
+      // Filter alerts that are over 80%
+      setBudgetAlerts(alerts.filter((a) => a.percentage >= 80))
 
       // Calculate metrics
       const income = transactionsData
@@ -302,6 +340,35 @@ export default function Dashboard() {
               <div className="mt-4 flex gap-3">
                 <Button href="/simuladores" outline>
                   Usar Simulador
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Budget Alerts */}
+      {budgetAlerts.length > 0 && (
+        <div className="mb-8 rounded-lg border border-orange-200 bg-orange-50 p-6 dark:border-orange-900/50 dark:bg-orange-900/10">
+          <div className="flex items-start gap-4">
+            <div className="text-2xl">⚠️</div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-orange-900 dark:text-orange-200">
+                Alerta de presupuesto
+              </h3>
+              <p className="mt-2 text-sm text-orange-800 dark:text-orange-300">
+                {budgetAlerts.length === 1 ? 'Una categoría está' : `${budgetAlerts.length} categorías están`} cerca de exceder el presupuesto:
+              </p>
+              <ul className="mt-3 space-y-2">
+                {budgetAlerts.slice(0, 3).map((alert, index) => (
+                  <li key={index} className="text-sm text-orange-800 dark:text-orange-300">
+                    • <strong>{alert.category}</strong>: {formatCurrency(alert.spent)} de {formatCurrency(alert.budget)} ({alert.percentage.toFixed(0)}%)
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-4 flex gap-3">
+                <Button href="/presupuestos" outline>
+                  Ver presupuestos
                 </Button>
               </div>
             </div>
