@@ -120,6 +120,17 @@ export interface Goal {
   created_at: string
 }
 
+// Goal Contribution (Aportes a metas)
+export interface GoalContribution {
+  id: string
+  goal_id: string
+  user_id: string
+  amount: number
+  description?: string
+  contribution_date: string
+  created_at: string
+}
+
 // Debt (Deudas)
 export interface Debt {
   id: string

@@ -3,7 +3,7 @@
 
 **Versión:** 1.0
 **Última actualización:** 4 de Noviembre, 2025
-**Estado del Proyecto:** 🟢 En Desarrollo (Sprints 1-5 Completados)
+**Estado del Proyecto:** 🟢 En Desarrollo (Sprints 1-6 Completados - MVP Funcional LISTO)
 
 ---
 
@@ -137,7 +137,37 @@ Una plataforma **simple e intuitiva** que permite a personas sin conocimiento fi
   - [x] Visualización de todos los presupuestos activos
 - [x] Navegación actualizada con enlace "Presupuestos"
 
-### ⏳ Por Hacer (Sprints 6-12)
+### ✅ Completado (Sprint 6 - 4 Nov 2025) - 🎉 MVP FUNCIONAL COMPLETADO
+
+- [x] Página de gestión de metas financieras
+  - [x] CRUD completo de metas
+  - [x] Wizard guiado de 5 pasos para crear metas
+  - [x] Tarjetas resumen (Ahorrado, Metas activas, Compromiso mensual)
+  - [x] Vista detallada por meta con progreso visual
+- [x] Tipos de metas predefinidas
+  - [x] Fondo de emergencia 🛡️
+  - [x] Compra grande 🏠
+  - [x] Salir de deudas 💳
+  - [x] Ahorro general 💰
+  - [x] Meta personalizada ✨
+- [x] Sistema de aportes
+  - [x] Registrar aportes a metas
+  - [x] Actualización automática del progreso
+  - [x] Tabla goal_contributions con RLS
+  - [x] Descripción opcional para cada aporte
+- [x] Proyecciones y cálculos automáticos
+  - [x] Cálculo de progreso (%)
+  - [x] Meses restantes para alcanzar meta
+  - [x] Sugerencia de aporte mensual basado en plazo
+  - [x] Monto faltante para completar meta
+- [x] Gestión de estados
+  - [x] Pausar/Reactivar metas
+  - [x] Completar meta automáticamente al alcanzarla
+  - [x] Celebración visual al completar meta 🎉
+  - [x] Vista separada por estado (activas, pausadas, completadas)
+- [x] Navegación actualizada (ya existía enlace "Metas")
+
+### ⏳ Por Hacer (Sprints 7-12)
 
 Ver sección "Roadmap de Desarrollo" abajo
 
@@ -789,14 +819,14 @@ Tablas principales:
 
 ## 🚀 Roadmap de Desarrollo
 
-### **Fase 1: MVP Funcional** (Sprints 1-6) - 6 semanas
+### **Fase 1: MVP Funcional** (Sprints 1-6) - 🎉 COMPLETADO
 ```
 ✅ Sprint 1: Fundamentos y Dashboard (COMPLETADO)
 ✅ Sprint 2: Autenticación (COMPLETADO)
 ✅ Sprint 3: Transacciones Core (COMPLETADO)
 ✅ Sprint 4: Categorías y Análisis (COMPLETADO)
 ✅ Sprint 5: Presupuestos (COMPLETADO)
-⏳ Sprint 6: Metas Financieras
+✅ Sprint 6: Metas Financieras (COMPLETADO)
 ```
 
 ### **Fase 2: Features Avanzadas** (Sprints 7-9) - 3 semanas
